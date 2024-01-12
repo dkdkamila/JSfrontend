@@ -7,6 +7,7 @@ import Navigation from './components/Navigation.js';
 import ClientPage from './pages/ClientPage.js';
 import AdminPage from './pages/AdminPage.js';
 
+
 function App() {
 
   return (
