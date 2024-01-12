@@ -8,6 +8,7 @@ const AdminPage = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [status, setStatus] = useState('');
+    /* ... API hantering... */
     useEffect(() => {
         fetchAllPosts();
     }, []);
@@ -21,10 +22,11 @@ const AdminPage = () => {
         }
     };
 
-    const createPost = async () => {
+    const createPost = async (e) => {
+        e.preventDefault(); // Förhindra standardformulärsbeteende
+        console.log('Title:', title);
+        console.log('Content:', content);
         try {
-            console.log('Title:', title);
-            console.log('Content:', content);
             await axios.post('https://backend-dominika.koyeb.app/api/posts', { title, content });
             setTitle('');
             setContent('');
@@ -73,7 +75,7 @@ const AdminPage = () => {
     return (
         <section id="rightcontent">
             <h1>Välkommen till Admin-sidan</h1>
-            {/* ... Formulär för att skapa nytt inlägg och lista med inlägg ... */}
+            { /* ... Formulär för att skapa nytt inlägg och lista med inlägg ... */}
             <form onSubmit={createPost}>
                 <div>
                     <label htmlFor="title">Titel:</label>

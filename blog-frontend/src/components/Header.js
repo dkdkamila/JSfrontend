@@ -1,10 +1,11 @@
 import React from 'react';
 import '../App.css';
+import photo from '../siberian.png';
 
 function Header() {
     return (
         <header className="mainheader">
-            <img src="/Users/dominikaberg/Desktop/JSfrontend/siberian.png" alt="header bild med 2 katter" title="sibiriska katter" className="bild" />
+            <img src={photo} alt="header bild med 2 katter" title="sibiriska katter" className="bild" />
         </header>
     );
 }
