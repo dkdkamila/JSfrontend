@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
@@ -14,16 +14,11 @@ function App() {
       <Header />
       <Navigation />
 
-      <Switch>
-        <Route exact path="/blogg">
-          <ClientPage />
-        </Route>
+      <Routes>
+        <Route path="/" element={<ClientPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
 
-        <Route exact path="/admin">
-          <AdminPage />
-        </Route>
-
-      </Switch>
 
       <Footer />
     </Router>
