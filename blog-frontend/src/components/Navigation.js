@@ -7,7 +7,7 @@ function Navigation() {
             <h2>Navigering</h2>
             <nav id="mainmenu">
                 <ul>
-                    <li><Link to="/blogg">Startsidan</Link></li>
+                    <li><Link to="/">Startsidan</Link></li>
                     <li><Link to="/admin">Adminsida- hantera inlägg</Link></li>
                 </ul>
             </nav>

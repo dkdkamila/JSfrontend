@@ -7,7 +7,7 @@ const AdminPage = () => {
     const [userPosts, setUserPosts] = useState([]);
     const [selectedPost, setSelectedPost] = useState(null);
     const [showModal, setShowModal] = useState(false);
-
+    const [status, setStatus] = useState('');
     useEffect(() => {
         fetchAllPosts();
     }, []);
@@ -23,6 +23,8 @@ const AdminPage = () => {
 
     const createPost = async () => {
         try {
+            console.log('Title:', title);
+            console.log('Content:', content);
             await axios.post('https://backend-dominika.koyeb.app/api/posts', { title, content });
             setTitle('');
             setContent('');
@@ -33,13 +35,17 @@ const AdminPage = () => {
     };
 
     const deletePost = async (postId) => {
+        console.log('Deleting post with ID:', postId);
         try {
             await axios.delete(`https://backend-dominika.koyeb.app/api/posts/${postId}`);
+            setStatus('Delete successful');
             fetchAllPosts();
         } catch (error) {
             console.error('Error deleting post:', error);
+            setStatus('Error deleting post');
         }
     };
+
 
     const handleEdit = (post) => {
         setSelectedPost(post);
@@ -59,6 +65,9 @@ const AdminPage = () => {
         } catch (error) {
             console.error('Error updating post:', error);
         }
+    };
+    const handleClickDelete = (postId) => {
+        deletePost(postId);
     };
 
     return (
@@ -84,7 +93,7 @@ const AdminPage = () => {
                 <div key={post._id}>
                     <h3>{post.title}</h3>
                     <p>{post.content}</p>
-                    <button onClick={() => deletePost(post._id)}>Radera</button>
+                    <button onClick={() => handleClickDelete(post._id)}>Radera</button>
                     <button onClick={() => handleEdit(post)}>Redigera</button>
                 </div>
             ))}
